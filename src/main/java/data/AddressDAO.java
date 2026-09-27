@@ -16,6 +16,22 @@ import util.EMUtil;
  * @author phatn
  */
 public class AddressDAO {
+    public static Address selectById(int id){
+        EntityManager em = EMUtil.getEmFactory().createEntityManager();
+        
+        Address address = null;
+        try {
+            address = em.find(Address.class, id);
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        finally {
+            em.close();
+        }
+        return address;
+    }
+    
     public static void insert(Address address){
         EntityManager em = EMUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();

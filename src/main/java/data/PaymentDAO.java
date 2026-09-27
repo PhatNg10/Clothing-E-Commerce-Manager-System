@@ -14,6 +14,22 @@ import util.EMUtil;
  * @author phatn
  */
 public class PaymentDAO {
+        public static Payment selectById(int id){
+        EntityManager em = EMUtil.getEmFactory().createEntityManager();
+        
+        Payment payment = null;
+        try {
+            payment = em.find(Payment.class, id);
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        finally {
+            em.close();
+        }
+        return payment;
+    }
+    
     public static void insert(Payment payment){
         EntityManager em = EMUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();

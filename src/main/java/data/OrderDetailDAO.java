@@ -5,6 +5,7 @@
 package data;
 
 import business.OrderDetail;
+import business.OrderDetailId;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import util.EMUtil;
@@ -14,6 +15,22 @@ import util.EMUtil;
  * @author phatn
  */
 public class OrderDetailDAO {
+        public static OrderDetail selectById(OrderDetailId id){
+        EntityManager em = EMUtil.getEmFactory().createEntityManager();
+        
+        OrderDetail orderDetail = null;
+        try {
+            orderDetail = em.find(OrderDetail.class, id);
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        finally {
+            em.close();
+        }
+        return orderDetail;
+    }
+    
     public static void insert(OrderDetail orderDetail){
         EntityManager em = EMUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();

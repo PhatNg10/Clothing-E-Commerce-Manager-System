@@ -14,6 +14,22 @@ import util.EMUtil;
  * @author phatn
  */
 public class WishlistDAO {
+        public static Wishlist selectById(int id){
+        EntityManager em = EMUtil.getEmFactory().createEntityManager();
+        
+        Wishlist wishlist = null;
+        try {
+            wishlist = em.find(Wishlist.class, id);
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        finally {
+            em.close();
+        }
+        return wishlist;
+    }
+    
     public static void insert(Wishlist wishlist){
         EntityManager em = EMUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();

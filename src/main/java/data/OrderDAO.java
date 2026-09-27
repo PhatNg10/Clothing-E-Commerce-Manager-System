@@ -14,6 +14,22 @@ import util.EMUtil;
  * @author phatn
  */
 public class OrderDAO {
+        public static Order selectById(int id){
+        EntityManager em = EMUtil.getEmFactory().createEntityManager();
+        
+        Order order = null;
+        try {
+            order = em.find(Order.class, id);
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        finally {
+            em.close();
+        }
+        return order;
+    }
+    
     public static void insert(Order order){
         EntityManager em = EMUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();

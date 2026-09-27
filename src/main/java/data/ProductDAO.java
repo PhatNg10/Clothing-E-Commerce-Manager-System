@@ -14,6 +14,22 @@ import util.EMUtil;
  * @author phatn
  */
 public class ProductDAO {
+        public static Product selectById(int id){
+        EntityManager em = EMUtil.getEmFactory().createEntityManager();
+        
+        Product customer = null;
+        try {
+            customer = em.find(Product.class, id);
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        finally {
+            em.close();
+        }
+        return customer;
+    }
+    
     public static void insert(Product product){
         EntityManager em = EMUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();

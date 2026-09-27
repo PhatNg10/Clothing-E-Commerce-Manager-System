@@ -14,6 +14,22 @@ import util.EMUtil;
  * @author phatn
  */
 public class VoucherDAO {
+        public static Voucher selectById(int id){
+        EntityManager em = EMUtil.getEmFactory().createEntityManager();
+        
+        Voucher voucher = null;
+        try {
+            voucher = em.find(Voucher.class, id);
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        finally {
+            em.close();
+        }
+        return voucher;
+    }
+    
     public static void insert(Voucher voucher){
         EntityManager em = EMUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();

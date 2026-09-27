@@ -14,6 +14,22 @@ import util.EMUtil;
  * @author phatn
  */
 public class EmployeeDAO {
+        public static Employee selectById(int id){
+        EntityManager em = EMUtil.getEmFactory().createEntityManager();
+        
+        Employee employee = null;
+        try {
+            employee = em.find(Employee.class, id);
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        finally {
+            em.close();
+        }
+        return employee;
+    }
+    
     public static void insert(Employee employee){
         EntityManager em = EMUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();

@@ -14,6 +14,22 @@ import util.EMUtil;
  * @author phatn
  */
 public class ReviewDAO {
+        public static Review selectById(int id){
+        EntityManager em = EMUtil.getEmFactory().createEntityManager();
+        
+        Review review = null;
+        try {
+            review = em.find(Review.class, id);
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        finally {
+            em.close();
+        }
+        return review;
+    }
+    
     public static void insert(Review review){
         EntityManager em = EMUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
