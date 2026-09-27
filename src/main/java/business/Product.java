@@ -32,6 +32,7 @@ public class Product implements Serializable {
     private BigDecimal basePrice;
     private String imageUrl;
     private LocalDateTime createdAt;
+    private int quantity;
     
     @OneToOne(mappedBy="product", cascade=CascadeType.ALL, orphanRemoval=true)
     private DiscountProduct discountProduct;
@@ -134,6 +135,14 @@ public class Product implements Serializable {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+    
+    public int getQuantity() {
+        return quantity;
+    }
+    
+    public void setQuantity(int quantity){
+        this.quantity = quantity;
     }
 
     @Override

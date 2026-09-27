@@ -14,5 +14,6 @@
     <class>business.Wishlist</class>
     <class>business.OrderDetail</class>
     <class>business.DiscountProduct</class>
+    <class>data.DiscountProductDAO</class>
   </persistence-unit>
 </persistence>
